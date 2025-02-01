@@ -1,0 +1,15 @@
+Parameters:
+  Stage:
+    Type: String
+    Default: dev
+
+Resources:
+  Queue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub "${Stage}-my-queue"
+      Tags:
+        - Key: Name
+          Value: !Sub "${Stage}-my-queue"
+        - Key: Environment
+          Value: !Ref Stage
